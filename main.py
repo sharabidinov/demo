@@ -33,7 +33,7 @@ os.chdir(repository_path)
 try:
     subprocess.run(['git', 'add', '.'])
     subprocess.run(['git', 'commit', '-m', commit_message])
-    subprocess.run(['git', 'push', '-u', 'origin', 'main', 'triangle4527'])
+    subprocess.run(['git', 'push', '-u', 'origin', 'main'])
     print('Changes successfully added, committed, and pushed')
 except Exception as e:
     print('An error occurred:', str(e))
