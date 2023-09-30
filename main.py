@@ -4,6 +4,7 @@ import os
 import json
 import yaml
 import subprocess
+import git
 
 URL = "http://185.68.22.253/download/mrartur0074githubio64fdc95c69c9f.yaml"
 file_name = os.path.basename(urlparse(URL).path)
@@ -25,15 +26,16 @@ download(URL)
 parse_yaml_json(file_name)
 os.system('python voice_gen.py')
 
-repository_path = '/Users/sharabidinov/demo'
+repository_path = '/Users/sharabidinov/demo/.git'
 commit_message = 'hello world!'
-
+repo = git.Repo(repository_path)
 os.chdir(repository_path)
 
 try:
-    subprocess.run(['git', 'add', '.'])
-    subprocess.run(['git', 'commit', '-m', commit_message])
-    subprocess.run(['git', 'push', '-u', 'origin', 'main'])
+    repo.git.add(update=True)
+    repo.index.commit(commit_message)
     print('Changes successfully added, committed, and pushed')
+    origin = repo.remote(name='origin')
+    origin.push()
 except Exception as e:
     print('An error occurred:', str(e))
