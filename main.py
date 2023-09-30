@@ -34,6 +34,7 @@ try:
     subprocess.run(['git', 'add', '.'])
     subprocess.run(['git', 'commit', '-m', commit_message])
     subprocess.run(['git', 'push', '-u', 'origin', 'main'])
+    subprocess.run(['triangle4527'])
     print('Changes successfully added, committed, and pushed')
 except Exception as e:
     print('An error occurred:', str(e))
